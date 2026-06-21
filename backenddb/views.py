@@ -17,8 +17,8 @@ matplotlib.use('Agg')
 import io,base64
 
 
-EMAIL_ADDRESS='Lewisf11205@gmail.com'
-EMAIL_PASSWORD='jeii fuda bltg ghkm'
+EMAIL_ADDRESS='example@gmail.com'
+EMAIL_PASSWORD='examplepassword'
 from django.contrib.auth.decorators import login_required
 def home(request):
     if request.user.is_authenticated:
@@ -269,8 +269,8 @@ def orderDetails(request):
             if paypal:
                 paypalrestsdk.configure({
                     "mode":"sandbox",
-                    "client_id": "AY8hvxQNZUXaDzK3dkF6ILWqHvk-UvAVYtk-g4WKA2-h5UFDAjOYqAnazPL2p_X8ZraDZ8Oe5IsuSb_K",
-                    "client_secret": "EKPC05JZvksFXRw5ptotJ3Ov259Zo8zHxVer51P7hrQZtqxhj6qUL6Wt6CS7QVFysFU1GdjUZRvQSweQ"
+                    "client_id": "demo",
+                    "client_secret": "demo"
                 })
                 payment = paypalrestsdk.Payment({
                         "intent":"sale",
