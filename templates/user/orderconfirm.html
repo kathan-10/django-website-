@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Order Confirmed - Your Company</title> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* CSS Variables for better maintainability and consistency */
+    :root {
+      --primary-green: #2ecc71;
+      --primary-blue: #3498db;
+      --dark-text: #2c3e50;
+      --light-text: #7f8c8d;
+      --border-color: #e0e6eb; /* Slightly darker border for better contrast */
+      --background-light: #f7f9fc; /* Slightly lighter, softer background */
+      --white: #fff;
+      --section-bg: #fdfdfd; /* Even more subtle background for sections */
+      --shadow-light: rgba(0, 0, 0, 0.05);
+      --shadow-medium: rgba(0, 0, 0, 0.09);
+    }
+
+    /* Universal box-sizing for consistent layout */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Body styling: font, background, text color, padding, and smooth scrolling */
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-light);
+      color: var(--dark-text);
+      padding: 40px 20px;
+      line-height: 1.6;
+      display: flex; /* Use flexbox for vertical centering if content is short */
+      justify-content: center;
+      align-items: flex-start; /* Align to start, not center, for longer content */
+      min-height: 100vh; /* Ensure body takes full viewport height */
+      -webkit-font-smoothing: antialiased; /* Smoother font rendering */
+      -moz-osx-font-smoothing: grayscale; /* Smoother font rendering */
+    }
+
+    /* Main container styling: max-width, background, padding, border-radius, shadow, and animation */
+    .container {
+      max-width: 720px;
+      width: 100%; /* Ensure it takes full width on smaller screens */
+      margin: 20px auto; /* Add margin-top for slight offset from top */
+      background-color: var(--white);
+      padding: 50px 60px; /* Increased horizontal padding for spacious feel */
+      border-radius: 20px; /* Slightly more rounded */
+      box-shadow: 0 18px 50px var(--shadow-medium); /* Enhanced shadow for depth */
+      animation: fadeIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1); /* Smoother animation curve */
+      border: 1px solid rgba(0, 0, 0, 0.05); /* Very subtle outer border */
+    }
+
+    /* Keyframe animation for fade-in effect */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(25px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Header styling: text alignment, margin, and icon/title/paragraph adjustments */
+    .header {
+      text-align: center;
+      margin-bottom: 50px; /* More space below header */
+    }
+
+    .header .check-icon {
+      font-size: 70px; /* Larger, more prominent icon */
+      color: var(--primary-green);
+      line-height: 1;
+      margin-bottom: 15px; /* More space below icon */
+    }
+
+    .header h1 {
+      font-size: 38px; /* More impactful heading */
+      color: var(--primary-green);
+      margin-top: 15px;
+      font-weight: 700;
+      letter-spacing: -0.5px; /* Tighter letter spacing for larger headings */
+    }
+
+    .header p {
+      font-size: 18px; /* Slightly larger paragraph text */
+      color: var(--light-text);
+      margin-top: 12px; /* More space below heading */
+      max-width: 550px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7; /* Better readability */
+    }
+
+    /* Section styling: margin, background, padding, border-radius, shadow */
+    .section {
+      margin-bottom: 45px; /* Increased vertical separation */
+      background-color: var(--section-bg);
+      border-radius: 14px; /* Slightly more rounded */
+      padding: 30px 35px; /* More generous internal padding */
+      border: 1px solid var(--border-color); /* Defined border */
+      box-shadow: 0 5px 15px var(--shadow-light); /* Subtle internal shadow */
+    }
+
+    .section:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* Section title styling: font, border, padding, color, and spacing */
+    .section-title {
+      font-size: 22px; /* Larger title */
+      font-weight: 600;
+      border-left: 6px solid var(--primary-blue); /* Thicker border */
+      padding-left: 18px; /* More padding */
+      margin-bottom: 28px; /* More space below title */
+      color: var(--dark-text);
+      letter-spacing: 0.2px; /* Refined letter spacing */
+    }
+
+    /* Info row styling: flex layout, padding, border-bottom, alignment */
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0; /* More vertical padding for each row */
+      border-bottom: 1px dashed var(--border-color); /* Consistent dashed border */
+      align-items: center;
+    }
+
+    .info-row:last-child {
+      border-bottom: none; /* No border for the last item */
+    }
+
+    /* Info label styling: font-weight, color, and flex basis */
+    .info-label {
+      font-weight: 500;
+      color: var(--light-text);
+      flex-basis: 40%;
+      line-height: 1.5; /* Ensure consistent line height */
+    }
+
+    /* Info value styling: font-weight, color, text alignment, and flex basis */
+    .info-value {
+      font-weight: 600;
+      color: var(--dark-text);
+      text-align: right;
+      flex-basis: 60%;
+      line-height: 1.5; /* Ensure consistent line height */
+      word-break: break-word; /* Prevents long words/emails from overflowing */
+    }
+
+    /* Button styling: display, margin, padding, background, color, text-decoration, font-weight, font-size, border-radius, transition, alignment, and shadow */
+    .btn-home {
+      display: inline-flex; /* Use inline-flex for better alignment of arrow */
+      align-items: center; /* Vertically align content */
+      justify-content: center; /* Center content horizontally */
+      gap: 8px; /* Space between arrow and text */
+      margin-top: 50px; /* More space above button */
+      padding: 16px 45px; /* Larger padding for a more substantial button */
+      background-color: var(--primary-blue);
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px; /* Larger font size */
+      border-radius: 12px;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3); /* More pronounced shadow */
+      border: none; /* Ensure no default button border */
+    }
+
+    .btn-home:hover {
+      background-color: #2c80b4;
+      transform: translateY(-3px); /* Slightly more lift on hover */
+      box-shadow: 0 15px 30px rgba(52, 152, 219, 0.4); /* Enhanced shadow on hover */
+    }
+
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+      .container {
+        padding: 40px 30px; /* Reduced padding for smaller screens */
+        border-radius: 15px;
+        margin: 15px auto;
+      }
+
+      .header h1 {
+        font-size: 32px;
+      }
+
+      .header p {
+        font-size: 16px;
+      }
+
+      .section {
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 35px;
+      }
+
+      .section-title {
+        font-size: 20px;
+        margin-bottom: 22px;
+        padding-left: 15px;
+      }
+
+      .info-row {
+        padding: 12px 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 15px;
+        align-items: flex-start; /* Ensure proper alignment on small screens */
+      }
+      .container {
+        padding: 30px 20px;
+        border-radius: 12px;
+      }
+
+      .header .check-icon {
+        font-size: 55px;
+      }
+
+      .header h1 {
+        font-size: 28px;
+      }
+
+      .header p {
+        font-size: 15px;
+        margin-top: 8px;
+      }
+
+      .section {
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+
+      .section-title {
+        font-size: 18px;
+        margin-bottom: 20px;
+        padding-left: 12px;
+        border-left: 4px solid var(--primary-blue);
+      }
+
+      .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+      }
+
+      .info-label {
+        font-size: 14px;
+        margin-bottom: 3px;
+        flex-basis: auto;
+      }
+
+      .info-value {
+        font-size: 15px;
+        text-align: left;
+        flex-basis: auto;
+      }
+
+      .btn-home {
+        padding: 14px 35px;
+        font-size: 16px;
+        border-radius: 10px;
+        margin-top: 40px;
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="header">
+      <div class="check-icon">✅</div>
+      <h1>Order Confirmed!</h1><p>Thank you for your purchase! We've sent your order confirmation via email.</p> </div>
+
+    <div class="section">
+      <div class="section-title">🛒 Order Summary</div>
+      <div class="info-row">
+        <div class="info-label">Order ID:</div> <div class="info-value"><strong>{{ order.id }}</strong></div> </div>
+      <div class="info-row">
+        <div class="info-label">Items:</div>
+        <div class="info-value">{{order_items}}</div>
+      </div>
+       <div class="info-row">
+        <div class="info-label">Total Quantity:</div> <div class="info-value">{{ order.quantity}}</div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-label">Total Amount:</div> <div class="info-value">Rs.{{ order.total }}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Payment Method:</div>
+        <div class="info-value">{{ order.payment_method }}</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">👤 Customer Information</div>
+      <div class="info-row">
+        <div class="info-label">Name:</div>
+        <div class="info-value">{{ order.customer_name }}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Email Address:</div> <div class="info-value">{{ order.email }}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Phone Number:</div> <div class="info-value">{{ order.mobile }}</div>
+      </div>
+      <div class="info-row">
+        <div class="info-label">Shipping Address:</div>
+        <div class="info-value">{{ order.address }}</div>
+      </div>
+    </div>
+
+     <div style="text-align: center;">
+      <a href="{% url 'invoice'  order.id  %}" class="btn-home">
+       Download Invoice
+      </a>
+    </div>
+    <div style="text-align: center;">
+      <a href="{% url 'clear_cart_and_home' %}" class="btn-home">
+        ← Go to Homepage
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
