@@ -381,8 +381,8 @@ def payment_success(request):
 
     paypalrestsdk.configure({
         "mode": "sandbox",
-        "client_id": "AY8hvxQNZUXaDzK3dkF6ILWqHvk-UvAVYtk-g4WKA2-h5UFDAjOYqAnazPL2p_X8ZraDZ8Oe5IsuSb_K",
-        "client_secret": "EKPC05JZvksFXRw5ptotJ3Ov259Zo8zHxVer51P7hrQZtqxhj6qUL6Wt6CS7QVFysFU1GdjUZRvQSweQ"
+        "client_id": "demo",
+        "client_secret": "demo"
 
     })
     payment = paypalrestsdk.Payment.find(payment_id)
